@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkcoinds_web"]=self["webpackChunkcoinds_web"]||[]).push([[973],{5973:function(n,u,r){r.r(u),r.d(u,{default:function(){return c}});var e=r(6768);function o(n,u){return(0,e.uX)(),(0,e.CE)("div",null,u[0]||(u[0]=[(0,e.Lk)("h1",null,"About CoinDS",-1),(0,e.Lk)("p",null,"Learn more about our platform.",-1)]))}var t=r(1241);const l={},a=(0,t.A)(l,[["render",o]]);var c=a}}]);
-//# sourceMappingURL=973.ea50c04d.js.map

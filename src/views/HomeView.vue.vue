@@ -1,52 +1,31 @@
-<template>
-  <div>
-    <h1>🔥 Top 100 Crypto Prices 🔥</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Coin</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="coin in coins" :key="coin.id">
-          <td>{{ coin.market_cap_rank }}</td>
-          <td>{{ coin.name }} ({{ coin.symbol.toUpperCase() }})</td>
-          <td>${{ coin.current_price.toLocaleString() }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
-
-
 <script>
-import { getTop100Coins } from '../api/crypto';
+console.log("📄 HomeView.vue loaded!"); // Debugging
 
 export default {
   data() {
     return {
-      coins: []
+      coins: [],
+      errorMessage: '',
     };
   },
   async created() {
-    this.coins = await getTop100Coins();
+    console.log("🔄 created() function is running..."); // ✅ Check if this logs
+
+    try {
+      console.log("📡 Fetching coin data from API...");
+      const response = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("✅ Coin data received in Vue:", data);
+      this.coins = [...data]; // ✅ Ensure Vue updates reactivity
+    } catch (error) {
+      console.error("❌ Error fetching coins:", error);
+      this.errorMessage = "⚠️ Failed to load coin prices. Please try again later.";
+    }
   }
 };
 </script>
-
-<style>
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-th {
-  background: #333;
-  color: white;
-}
-</style>

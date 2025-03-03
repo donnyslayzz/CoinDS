@@ -1,5 +1,10 @@
-const { defineConfig } = require('@vue/cli-service');
-module.exports = defineConfig({
+module.exports = {
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production' ? '/CoinDS/' : '/'
-});
+  configureWebpack: {
+    resolve: {
+      alias: {
+        vue$: "vue/dist/vue.esm-bundler.js"
+      }
+    }
+  }
+};

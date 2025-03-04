@@ -1,15 +1,17 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router'; // ✅ Use hash mode for GitHub Pages
 import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
+import TradeView from '../views/TradeView.vue';
+import WalletView from '../views/WalletView.vue';
 
 const routes = [
-  { path: '/CoinDS/', component: HomeView }, // ✅ Adjusted for GitHub Pages
-  { path: '/CoinDS/about', component: AboutView }, // ✅ Ensure correct path for GitHub Pages
+  { path: '/', component: HomeView },
+  { path: '/trade', component: TradeView },
+  { path: '/wallet', component: WalletView }
 ];
 
 const router = createRouter({
-  history: createWebHistory("/CoinDS/"), // ✅ Correct GitHub Pages path handling
-  routes
+  history: createWebHashHistory('/CoinDS/'), // ✅ Hardcoded base URL for GitHub Pages
+  routes,
 });
 
 export default router;

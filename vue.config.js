@@ -1,6 +1,5 @@
 module.exports = {
-  transpileDependencies: true,
-  publicPath: "/CoinDS/", // ✅ Use repo name here to match GitHub Pages URL
+  publicPath: "/CoinDS/", 
   configureWebpack: {
     resolve: {
       alias: {
